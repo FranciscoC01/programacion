@@ -3,8 +3,6 @@
 
 #include <stdio.h>
 
-//TO DO: que pasa cuando las palabras son demasiado iguales?
-
 //constantes globales
 #define CANTS 5              //cantidad de palabras a comparar
 #define LENS 20              //longitud maxima de las palabras
