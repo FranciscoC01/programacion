@@ -36,7 +36,6 @@ void guardar(char* p,int len){
         exit(1);
     }
     for(i=0;i<len;i++){
-        printf("p: %c\n",*p);
         if(*p==10){
             fwrite(&c,sizeof(char),1,fp);
             break;
