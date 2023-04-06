@@ -1,0 +1,23 @@
+La diferencia esencial entre una estructura y una union, es como ambas manejan el espacio que ocupan,
+una estructura tendra el espacio que ocupen cada uno de sus miembros, por ejemplo,
+
+typedef struct{
+    int a;
+    float b;
+    char c;
+} ejemplo;
+
+en este caso "a" ocupa 4 bytes, "b" ocupa 4 bytes y "c" ocupa 1 byte, por lo tanto
+el espacio ocupado en memoria por la estructura "ejemplo" es 9 bytes.
+
+ahora cuando hablamos de una union, la union va a ocupar el espacio del primer miembro al que se le asigne un valor
+como seria eso?
+
+union Ejemplo{
+    int a;
+    float b;
+    char c;
+} ejemplo;
+
+si yo le asigno un valor primero a "a" la union ocupara un espacio de 4 bytes lo mismo con "b", pero si yo le asigno un valor
+a "c" primero la union va a ocupar solamente 1 byte.
