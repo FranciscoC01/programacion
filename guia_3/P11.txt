@@ -1,0 +1,17 @@
+suponga que el puntero p esta declarado como sigue
+
+struct mi_estructura {
+    char a,b;
+    int c;
+    int e[5];
+};
+
+struct mi_estructura me;
+struct mi_estructura *p = &me;
+
+a) p->b = ' '; VALIDA
+b) p->e[3] = 10; VALIDA
+c) (*p).a = '?'; VALIDA??
+d) *p.b = '?'; NO VALIDA??
+e) me.c = 1; VALIDA
+f) p.c = 1; NO VALIDA

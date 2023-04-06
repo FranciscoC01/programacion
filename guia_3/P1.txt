@@ -1,0 +1,5 @@
+la opcion D va a cambiar el valor de i
+
+la opcion A va a cambiar el valor de k de 42 a 75
+la opcion B va a dar un error de compilacion
+la opcion C va a cambiar el puntero a la direccion de memoria 75

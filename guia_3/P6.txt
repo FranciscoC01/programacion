@@ -1,0 +1,10 @@
+         0  4   8   12  16  20 24  28
+int a = {5, 15, 34, 54, 14, 2, 52, 72};
+int *p = &a[1];
+int *q = &a[5];
+
+a) cual es el valor de *(p+3)? 14
+b) cual es el valor de *(q-3)? 34
+c) cual es el valor de q-p? 16-4 => 12 (diferencia de bytes entre esos punteros)
+d) la condicion p<q es verdadera o falsa? verdadera
+e) la condicion *p<*q es verdadera o falsa? falsa

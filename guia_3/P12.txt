@@ -1,0 +1,14 @@
+Suponga que f y p estan declarados como sigue
+
+struct {
+    union{
+        char a,b;
+        int c;
+    } d;
+    int e[5];
+} f, *p = &f;
+
+a) p->b = ' '; NO VALIDA
+b) p->e[3] = 10; VALIDA
+c) (*p).d.a = '*'; VALIDA
+d) p->d->c = 'X'; NO VALIDA

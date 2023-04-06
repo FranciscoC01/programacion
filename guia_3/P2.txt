@@ -1,0 +1,7 @@
+el fragmento de codigo:
+
+char c = 'A';
+double *p  = &c;
+
+esta escrito de forma erronea a causa de que a un puntero de tipo "double"
+le estoy asignando el valor de memoria de una variable de tipo "char"
