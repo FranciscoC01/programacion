@@ -10,9 +10,8 @@ int main(){
     char str[] = "hola";
     int i;
     p_copy = duplicar(str);
-    printf("hola?");
     printf("la palabra duplicada es: ");
-    for(i=0;*(p_copy+i)!=10;i++){
+    for(i=0;*(p_copy+i)!=0;i++){
         printf("%c",*(p_copy+i));
     }
     free(p_copy);
@@ -23,13 +22,12 @@ char* duplicar(char* str){
     char* p_out = (char*) malloc(sizeof(char)); 
     char* p_aux = NULL;
     int i;
-    if(*str==10){
+    if(*str==0){
         return NULL;
     }else{
-        *p_out = *str;
-        for(i=1;*(str+i)!=10;i++){
+        do{
             p_aux = (char*) realloc(p_out, (i+1)*sizeof(char));
-            if(p_aux!=NULL){
+            if(p_aux!=NULL){                                         //control de error
                 p_out = p_aux;
                 p_aux = NULL;
                 *(p_out+i) = *(str+i);
@@ -37,12 +35,13 @@ char* duplicar(char* str){
                 puts("error al reservar memoria");
                 exit(1);
             }
-        }
+            i++;
+        }while((*(str+i))!=0);
         p_aux = (char*) realloc(p_out, (i+1)*sizeof(char));
         if(p_aux!=NULL){
             p_out = p_aux;
             p_aux = NULL;
-            *(p_out+i) = 10;
+            *(p_out+i) = 0;
         }
         return p_out;
     }
