@@ -1,40 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Se puede optimizar bastante
+
 //prototipos
 typedef struct nodo{                                       //estructura de mis nodos
     int dato;
     struct nodo* sig;
 } nodo;
 
-nodo* add_n(nodo* lista, int dato);                        //funcion que agrega un nodo
+nodo* addFIFO(nodo* lista, int dato);                     //funcion que agrega un nodo FIFO
 void mostrar(nodo* lista);                                 //funcion que muestra la lista
 nodo* destruir(nodo* lista);                               //funcion que elimina la lista
 //-------
 
 int main(){
     nodo* lista = NULL;                                    //desde aca accedo a los nodos
-    lista = add_n(lista, 1);
-    lista = add_n(lista, 2);
-    lista = add_n(lista, 3);
+    int dato = 0;                                          //variable auxiliar para guardar el dato del nodo
+    printf("\ningrese los datos de los nodos, para salir ingrese -1\n");
+    while(dato!=-1){                                       //utilizo -1 como flag para salir del loop
+        fflush(stdin);                                     //para evitar que cuando se ingrese una letra reviente el programa
+        printf("dato del nodo: ");
+        scanf("%i",&dato);
+        if(dato!=-1){
+            lista = addNLIFO(lista, dato);                 //agrego el nodo
+        }
+    }
     mostrar(lista);
     destruir(lista);
     return 0;
 }
 
-
-nodo* add_n(nodo* lista, int dato){                        //agregar en forma LIFO(por mas que el punto no lo especifique)
+nodo* addFIFO(nodo* lista, int dato){
     nodo* nuevo = (nodo*) malloc(sizeof(nodo));            //nuevo nodo
-    
+    nodo* p = lista;
+
     nuevo->dato = dato;                                    //dato del nodo
     nuevo->sig = NULL;                                     //apunta a ninguna parte
 
-    if(lista == NULL){                                     //si la lista esta vacia apunto al nuevo nodo
+    if(p == NULL){                                         //si la lista esta vacia apunto al nuevo nodo
         return nuevo;                                      //devuelvo el nuevo nodo como el primer elemento de la lista
     }
     else{                                                  //si la lista no esta vacia
-        nuevo->sig=lista;                                  //al nuevo nodo le agrego todos los nodos anteriores atras
-        return nuevo;
+        while(p->sig !=NULL){
+            p = p->sig;
+            
+        }
+        p->sig=nuevo;                                      //al nuevo nodo le agrego todos los nodos anteriores atras
+        return lista;
     }
 }
 

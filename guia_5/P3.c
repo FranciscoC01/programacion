@@ -10,20 +10,24 @@ typedef struct nodo{                                       //estructura de mis n
 nodo* add_n(nodo* lista, int dato);                        //funcion que agrega un nodo
 void mostrar(nodo* lista);                                 //funcion que muestra la lista
 nodo* destruir(nodo* lista);                               //funcion que elimina la lista
+int len(nodo* lista);                                      //funcion que devuelve la cantidad de elementos de una lista
 //-------
 
 int main(){
     nodo* lista = NULL;                                    //desde aca accedo a los nodos
+    int len_lista = 0;
     lista = add_n(lista, 1);
     lista = add_n(lista, 2);
     lista = add_n(lista, 3);
+    len_lista = len(lista);
+    printf("la cantidad de nodos es: %i\n", len_lista);
     mostrar(lista);
     destruir(lista);
     return 0;
 }
 
 
-nodo* add_n(nodo* lista, int dato){                        //agregar en forma LIFO(por mas que el punto no lo especifique)
+nodo* add_n(nodo* lista, int dato){                        //agregar en forma LIFO
     nodo* nuevo = (nodo*) malloc(sizeof(nodo));            //nuevo nodo
     
     nuevo->dato = dato;                                    //dato del nodo
@@ -63,4 +67,19 @@ nodo* destruir(nodo* lista){                               //destruir la lista
     }
     printf("lista destruida\n");
     return NULL;
+}
+
+int len(nodo* lista){
+    int cant_nodos = 0;
+    nodo* p;
+    if(lista == NULL){
+        return -1;
+    }else{
+        p = lista;                                         //p lo posiciono en el primer elemento
+        while(p != NULL){                                  //mientras que p no este en el final de la lista
+            cant_nodos++;
+            p = p->sig;
+        }
+        return cant_nodos;
+    }
 }

@@ -14,16 +14,22 @@ nodo* destruir(nodo* lista);                               //funcion que elimina
 
 int main(){
     nodo* lista = NULL;                                    //desde aca accedo a los nodos
-    lista = add_n(lista, 1);
-    lista = add_n(lista, 2);
-    lista = add_n(lista, 3);
+    int dato = 0;                                          //variable auxiliar para guardar el dato del nodo
+    printf("ingrese los datos de los nodos, para salir ingrese -1\n");
+    while(dato!=-1){                                       //utilizo -1 como flag para salir del loop
+        printf("dato del nodo: ");
+        scanf("%i",&dato);
+        if(dato!=-1){
+            lista = add_n(lista, dato);                    //agrego el nodo
+        }
+    }
     mostrar(lista);
     destruir(lista);
     return 0;
 }
 
 
-nodo* add_n(nodo* lista, int dato){                        //agregar en forma LIFO(por mas que el punto no lo especifique)
+nodo* add_n(nodo* lista, int dato){                        //agregar en forma LIFO
     nodo* nuevo = (nodo*) malloc(sizeof(nodo));            //nuevo nodo
     
     nuevo->dato = dato;                                    //dato del nodo
